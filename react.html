@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html class="dark" lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>우주도서관 | NASA 우주 사진을 한국어로</title>
+    <meta name="description" content="NASA 공식 데이터 기반 한국어 우주 정보 플랫폼. 오늘의 우주 사진, 내 생일의 우주, 별 스펙트럼 아카이브를 한국어로 만나보세요.">
+    <meta name="keywords" content="우주도서관, NASA 우주 사진 한국어, NASA APOD 한국어, 내 생일의 우주 사진">
+    <meta property="og:title" content="우주도서관 | NASA 우주 사진을 한국어로">
+    <meta property="og:description" content="NASA 공식 데이터 기반 한국어 우주 정보 플랫폼">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#9cf0ff",
+                        "surface-tint": "#cebdff",
+                        "surface-container-low": "#1b1a26",
+                        "on-secondary-fixed-variant": "#004f58",
+                        "on-primary-container": "#9674f8",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#00616d",
+                        "on-error": "#690005",
+                        "inverse-primary": "#6844c7",
+                        "surface-container-lowest": "#0d0d18",
+                        "surface-dim": "#12121d",
+                        "on-background": "#e3e0f1",
+                        "surface-container-high": "#292935",
+                        "tertiary-fixed": "#ffe16d",
+                        "inverse-surface": "#e3e0f1",
+                        "primary-fixed": "#e8ddff",
+                        "on-primary-fixed-variant": "#5028ae",
+                        "tertiary": "#e9c400",
+                        "surface": "#12121d",
+                        "surface-container": "#1f1e2a",
+                        "outline-variant": "#4a454e",
+                        "surface-variant": "#343440",
+                        "on-secondary": "#00363d",
+                        "inverse-on-surface": "#302f3b",
+                        "on-primary-fixed": "#21005e",
+                        "on-tertiary-fixed": "#221b00",
+                        "background": "#12121d",
+                        "primary": "#cebdff",
+                        "primary-container": "#2b0074",
+                        "on-primary": "#390094",
+                        "on-surface": "#e3e0f1",
+                        "primary-fixed-dim": "#cebdff",
+                        "on-surface-variant": "#ccc4cf",
+                        "on-tertiary-fixed-variant": "#544600",
+                        "on-tertiary-container": "#4c3f00",
+                        "surface-bright": "#383845",
+                        "on-tertiary": "#3a3000",
+                        "secondary": "#bdf4ff",
+                        "on-secondary-fixed": "#001f24",
+                        "surface-container-highest": "#343440",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#00daf3",
+                        "tertiary-container": "#c9a900",
+                        "error-container": "#93000a",
+                        "outline": "#958e99",
+                        "tertiary-fixed-dim": "#e9c400",
+                        "secondary-container": "#00e3fd"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #12121d;
+            color: #e3e0f1;
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+        }
+        .nebula-glow {
+            background: radial-gradient(circle at 50% 50%, #2b0074 0%, #12121d 70%);
+        }
+        .glass-panel {
+            background: rgba(27, 26, 38, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .starlight-glow {
+            box-shadow: 0 0 15px 2px rgba(189, 244, 255, 0.3);
+        }
+        .bloom-indicator { box-shadow: 0 0 8px #bdf4ff; }
+        .bloom-effect { box-shadow: 0 0 15px rgba(189, 244, 255, 0.4); }
+        .nebula-gradient { background: radial-gradient(circle at 70% 30%, #2b0074 0%, #12121d 70%); }
+        .ethereal-glow { background: radial-gradient(circle, rgba(80, 50, 120, 0.35) 0%, rgba(10, 8, 20, 0) 70%); }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #12121d; }
+        ::-webkit-scrollbar-thumb { background: #4a454e; }
+        .selection\:bg-primary\/30::selection { background-color: rgba(206, 189, 255, 0.3); }
+    </style>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/history@5/umd/history.development.js"></script>
+    <script src="https://unpkg.com/react-router@6.3.0/umd/react-router.development.js"></script>
+    <script src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body class="selection:bg-primary/30">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { createRoot } = ReactDOM;
+        const { BrowserRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
+
+        // --- API Utilities ---
+        const getApiKey = (key) => localStorage.getItem(key) || '';
+        const saveApiKey = (key, value) => localStorage.setItem(key, value);
+
+        const fetchNASAApod = async (date) => {
+            const apiKey = getApiKey('NASA_API_KEY');
+            if (!apiKey) throw new Error('NASA_KEY_MISSING');
+            const dateParam = date ? `&date=${date}` : '';
+            const res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}${dateParam}`);
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.msg || 'NASA_FETCH_FAILED');
+            }
+            return res.json();
+        };
+
+        const fetchClaudeKorean = async (apodData, mode) => {
+            const apiKey = getApiKey('CLAUDE_API_KEY');
+            if (!apiKey) throw new Error('CLAUDE_KEY_MISSING');
+            const prompt = mode === 'birthday'
+                ? `NASA 오늘의 우주 사진 정보:\n제목: ${apodData.title}\n날짜: ${apodData.date}\n설명: ${apodData.explanation}\n\n이 날의 우주 사진을 바탕으로 생일 축하 메시지를 한국어로 작성해주세요. 우주적 관점에서 이 날의 특별함을 강조하며 따뜻하고 감동적인 메시지를 250자 내외로 써주세요.`
+                : `NASA 오늘의 우주 사진 정보:\n제목: ${apodData.title}\n날짜: ${apodData.date}\n설명: ${apodData.explanation}\n\n이 우주 사진에 대한 한국어 해설을 작성해주세요. 천문학적 내용을 일반인도 이해하기 쉽게 설명하고, 우주의 경이로움을 담아 250자 내외로 써주세요.`;
+            const res = await fetch('https://api.anthropic.com/v1/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': apiKey,
+                    'anthropic-version': '2023-06-01',
+                    'anthropic-dangerous-direct-browser-access': 'true'
+                },
+                body: JSON.stringify({
+                    model: 'claude-haiku-4-5-20251001',
+                    max_tokens: 600,
+                    messages: [{ role: 'user', content: prompt }]
+                })
+            });
+            if (!res.ok) {
+                const err = await res.json().catch(function() { return {}; });
+                throw new Error((err.error && err.error.message) || 'CLAUDE_FETCH_FAILED');
+            }
+            const data = await res.json();
+            return data.content[0].text;
+        };
+
+        // --- Common Components ---
+
+        const Nav = () => {
+            const [showSettings, setShowSettings] = useState(false);
+            const location = useLocation();
+            const isLinkActive = (path) => location.pathname === path;
+
+            return (
+                <React.Fragment>
+                {showSettings && <SettingsModal onClose={() => setShowSettings(false)} onSaved={() => setShowSettings(false)} />}
+                <nav className="sticky top-0 z-50 flex justify-between items-center w-full px-8 py-4 max-w-none bg-[#1b1a26]/60 backdrop-blur-xl font-headline tracking-tight">
+                    <Link to="/" className="text-2xl font-bold tracking-tighter text-[#cebdff]">우주도서관</Link>
+                    <div className="hidden md:flex items-center gap-8">
+                        <Link to="/" className={`${isLinkActive('/') ? 'text-[#cebdff] border-b-2 border-[#cebdff] pb-1 font-bold' : 'text-[#bdf4ff]/70 hover:text-[#cebdff]'} transition-colors`}>로비</Link>
+                        <Link to="/archive" className={`${isLinkActive('/archive') ? 'text-[#cebdff] border-b-2 border-[#cebdff] pb-1 font-bold' : 'text-[#bdf4ff]/70 hover:text-[#cebdff]'} transition-colors`}>보관소</Link>
+                        <Link to="/stars" className={`${isLinkActive('/stars') ? 'text-[#cebdff] border-b-2 border-[#cebdff] pb-1 font-bold' : 'text-[#bdf4ff]/70 hover:text-[#cebdff]'} transition-colors`}>나의 항성계</Link>
+                        <Link to="/today" className={`${isLinkActive('/today') ? 'text-[#cebdff] border-b-2 border-[#cebdff] pb-1 font-bold' : 'text-[#bdf4ff]/70 hover:text-[#cebdff]'} transition-colors`}>오늘의 우주</Link>
+                    </div>
+                    <div className="flex items-center gap-6">
+                        <div className="relative hidden lg:block">
+                            <input className="bg-surface-container-lowest border-none text-primary placeholder:text-primary/30 rounded-lg px-4 py-1.5 w-64 focus:ring-1 focus:ring-primary font-headline text-sm" placeholder="우주를 탐색하세요..." type="text"/>
+                            <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary/50 text-sm">search</span>
+                        </div>
+                        <button onClick={() => setShowSettings(true)} className="hover:bg-[#292935]/50 transition-all duration-300 p-2 rounded-full active:scale-95">
+                            <span className="material-symbols-outlined text-[#cebdff]">account_circle</span>
+                        </button>
+                    </div>
+                </nav>
+                </React.Fragment>
+            );
+        };
+
+        const Footer = () => (
+            <footer className="bg-[#12121d] w-full py-12 border-t border-[#4a454e]/15 flex flex-col md:flex-row justify-between items-center px-12 gap-4">
+                <div className="font-['Inter'] uppercase text-[10px] tracking-[0.1em] text-[#9cf0ff]">
+                    © 2142 THE CELESTIAL ARCHIVE | COSMIC STATUS: STABLE
+                </div>
+                <div className="flex gap-10">
+                    <Link className="font-['Inter'] uppercase text-[10px] tracking-[0.1em] text-[#bdf4ff]/40 hover:text-[#cebdff] transition-all" to="/today">프로토콜</Link>
+                    <Link className="font-['Inter'] uppercase text-[10px] tracking-[0.1em] text-[#bdf4ff]/40 hover:text-[#cebdff] transition-all" to="/archive">좌표</Link>
+                    <Link className="font-['Inter'] uppercase text-[10px] tracking-[0.1em] text-[#bdf4ff]/40 hover:text-[#cebdff] transition-all" to="/stars">신호</Link>
+                </div>
+                <div className="flex items-center gap-4">
+                    <span className="w-1 h-1 rounded-full bg-secondary"></span>
+                    <span className="font-['Inter'] uppercase text-[10px] tracking-[0.1em] text-[#bdf4ff]/40">KOR-01 SECTOR</span>
+                </div>
+            </footer>
+        );
+
+        // --- Page Components ---
+
+        const HomePage = () => {
+            const navigate = useNavigate();
+
+            const FALLBACK_COMMENTARY = '우주의 광활함 속에서 포착된 이 경이로운 장면은, 우리 존재가 얼마나 광대한 무대 위에 펼쳐져 있는지를 일깨워 줍니다. 수억 광년의 거리를 가로질러 도달한 빛 속에는 인류의 상상력이 닿을 수 없는 깊이가 담겨 있습니다.';
+            const FALLBACK_BIRTHDAY  = '당신이 태어난 그 순간, 우주는 수십억 년의 여정 끝에 이 아름다운 장면을 완성했습니다. 별빛이 당신의 탄생을 축하하듯 반짝였고, 광대한 우주는 당신이라는 존재를 이 세상에 맞이하기 위해 준비되어 있었습니다. 생일을 진심으로 축하합니다.';
+
+            const [apod, setApod] = useState(null);
+            const [apodLoading, setApodLoading] = useState(false);
+            const [apodError, setApodError] = useState(null);
+            const [commentary, setCommentary] = useState(null);
+            const [commentaryLoading, setCommentaryLoading] = useState(false);
+            const [birthDate, setBirthDate] = useState('');
+            const [birthdayApod, setBirthdayApod] = useState(null);
+            const [birthdayLoading, setBirthdayLoading] = useState(false);
+            const [birthdayMsg, setBirthdayMsg] = useState(null);
+            const [birthdayMsgLoading, setBirthdayMsgLoading] = useState(false);
+            const [birthdayError, setBirthdayError] = useState(null);
+
+            const loadToday = async () => {
+                setApodLoading(true); setApodError(null); setCommentary(null);
+                try { const d = await fetchNASAApod(); setApod(d); }
+                catch (e) { setApodError(e.message); }
+                finally { setApodLoading(false); }
+            };
+
+            useEffect(function() { if (getApiKey('NASA_API_KEY')) loadToday(); }, []);
+
+            const generateCommentary = async () => {
+                if (!apod) return;
+                setCommentaryLoading(true);
+                try { setCommentary(await fetchClaudeKorean(apod, 'commentary')); }
+                catch (e) { setCommentary(FALLBACK_COMMENTARY); }
+                finally { setCommentaryLoading(false); }
+            };
+
+            const loadBirthdayApod = async () => {
+                if (!birthDate) return;
+                setBirthdayLoading(true); setBirthdayError(null); setBirthdayApod(null); setBirthdayMsg(null);
+                try { setBirthdayApod(await fetchNASAApod(birthDate)); }
+                catch (e) { setBirthdayError(e.message === 'NASA_KEY_MISSING' ? 'NASA API 키를 먼저 설정해주세요.' : e.message); }
+                finally { setBirthdayLoading(false); }
+            };
+
+            const generateBirthdayMsg = async () => {
+                if (!birthdayApod) return;
+                setBirthdayMsgLoading(true);
+                try { setBirthdayMsg(await fetchClaudeKorean(birthdayApod, 'birthday')); }
+                catch (e) { setBirthdayMsg(FALLBACK_BIRTHDAY); }
+                finally { setBirthdayMsgLoading(false); }
+            };
+
+            return (
+                <main className="relative min-h-screen">
+                    <section className="relative h-[819px] flex items-center justify-center overflow-hidden nebula-glow px-8">
+                        <div className="absolute inset-0 z-0">
+                            <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]"></div>
+                            <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[100px]"></div>
+                        </div>
+                        <div className="relative z-10 text-center max-w-5xl">
+                            <div className="inline-flex items-center gap-2 mb-6 px-3 py-1 bg-surface-container-high/50 border border-outline-variant/15 rounded-full">
+                                <span className="flex h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
+                                <span className="font-label text-[10px] uppercase tracking-[0.2em] text-secondary-fixed">System Status: Active</span>
+                            </div>
+                            <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-on-background mb-8 leading-[1.1]">
+                                우주도서관: <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary-fixed">나만의 우주 정보 도서관</span>
+                            </h1>
+                            <p className="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-12 font-light tracking-wide opacity-80">
+                                심우주의 지식을 탐험하고 보관하는 중앙 아카이브. 고대 성단부터 붕괴하는 블랙홀까지, 우주의 모든 기록이 이곳에서 시작됩니다.
+                            </p>
+                            <div className="flex flex-wrap justify-center gap-4">
+                                <button onClick={() => navigate('/archive')} className="px-8 py-4 bg-gradient-to-r from-primary to-on-primary-container text-on-primary font-bold rounded-md hover:opacity-90 transition-all active:scale-95 flex items-center gap-2">
+                                    <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>auto_awesome</span>
+                                    탐사 시작하기
+                                </button>
+                                <button onClick={() => navigate('/stars')} className="px-8 py-4 border border-outline-variant/30 text-primary font-bold rounded-md hover:bg-surface-bright/20 transition-all active:scale-95">
+                                    내 성계 확인
+                                </button>
+                            </div>
+                        </div>
+                        <div className="absolute bottom-12 left-12 hidden lg:block font-label text-[10px] text-primary/40 leading-relaxed uppercase tracking-[0.15em]">
+                            COORD: 48.1516 / 23.42<br/>
+                            REF_SYS: ARCHIVE_DELTA_V<br/>
+                            SIGNAL: STABLE
+                        </div>
+                    </section>
+
+                    <section className="py-24 px-8 max-w-7xl mx-auto">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                            <div>
+                                <h2 className="font-headline text-4xl font-bold text-on-background mb-4">주요 보관 카테고리</h2>
+                                <p className="font-body text-on-surface-variant max-w-md">아카이브의 방대한 데이터가 실시간으로 동기화되고 있습니다. 탐사할 대상을 선택하십시오.</p>
+                            </div>
+                            <Link to="/archive" className="font-label text-[11px] text-secondary tracking-widest border-b border-secondary/30 pb-1 cursor-pointer hover:text-primary transition-colors">
+                                전체 보관소 탐색하기 ->
+                            </Link>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-auto md:h-[700px]">
+                            <div onClick={() => navigate('/archive')} className="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-xl bg-surface-container-low p-8 flex flex-col justify-end cursor-pointer">
+                                <img className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALeXbGTrWlkWeGVg_5uy2QsYdLP2qXjP2eMPX9IguyPN_tBtC966qqkgw6CG1lqr97lg2LJlN4A6jNFMv8lkfilBYxahhtr3ZUF9ucc9X5_tOM66yYD3_TnpzSI7sPV0MLhzW89ic1X0w3lweygZ2ieXkdO01OlgLe38ZISV8Tkw1IjhdljKrzSdpqRWHINzt1fXEJ446l6fF-TfC8coPNclLOfjn9OuLThXwB8sJCfJtNRa5DkBKCcWcvS3MfPqLDlezqFEpB5q8" alt="Planets" fetchpriority="high"/>
+                                <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-low/40 to-transparent"></div>
+                                <div className="relative z-10">
+                                    <span className="font-label text-[10px] text-secondary tracking-[0.2em] mb-2 block uppercase">Category: Catalog-01</span>
+                                    <h3 className="font-headline text-3xl font-bold text-on-background mb-4">행성 (Planets)</h3>
+                                    <p className="font-body text-sm text-on-surface-variant max-w-xs mb-6">암석 행성부터 가스 거인까지, 은하계 전역의 행성 환경 데이터베이스.</p>
+                                    <div className="flex gap-2">
+                                        <span className="px-2 py-1 bg-secondary-container/20 text-secondary-fixed text-[10px] font-label rounded-sm">1,402 ENTRIES</span>
+                                        <span className="px-2 py-1 bg-surface-container-highest/40 text-on-surface-variant text-[10px] font-label rounded-sm">UPDATED 2H AGO</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div onClick={() => navigate('/detail')} className="md:col-span-2 md:row-span-1 group relative overflow-hidden rounded-xl bg-surface-container-low p-8 flex items-center cursor-pointer">
+                                <img className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnTmA72wTpCBOCbGGMgcl6_cVVSJt8zSEWhezlAiFR0Xfa6a2gUEmmdbLxQlU613m9Y6fMttnVd_u6ao-nbnuPzeGr8FyG1AdYzblSwInz37gj_CAs6LKOfg2kiMrlE5FEnq9EDj9tQWOwIow4I3M_pXjGWqLhExOYV_bkYxmr-l9tXaDGmplbffHVwOic8lC511iIdnZ7N5oiWCQ4X1wp41RcHMsohKdIdIpWeo7Lmf-lbm1rXX7ZZNYgJ1a71Qg29TucpM54jXQ" alt="Nebulae" loading="lazy"/>
+                                <div className="absolute inset-0 bg-gradient-to-r from-surface-container-lowest/80 to-transparent"></div>
+                                <div className="relative z-10">
+                                    <h3 className="font-headline text-2xl font-bold text-on-background mb-2">성운 (Nebulae)</h3>
+                                    <p className="font-body text-xs text-on-surface-variant max-w-xs">별이 탄생하는 요람, 이온화된 가스 구름의 장관을 기록합니다.</p>
+                                </div>
+                                <div className="absolute right-8 bottom-8">
+                                    <span className="material-symbols-outlined text-4xl text-primary/30 group-hover:text-primary transition-colors">cloud</span>
+                                </div>
+                            </div>
+                            <div className="md:col-span-1 md:row-span-1 group relative overflow-hidden rounded-xl bg-surface-container-low p-6 flex flex-col justify-between">
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary-container/20 to-surface"></div>
+                                <div className="relative z-10">
+                                    <h3 className="font-headline text-xl font-bold text-on-background mb-1">블랙홀</h3>
+                                    <span className="font-label text-[9px] text-error/60 tracking-tighter uppercase">Gravity Hazard: High</span>
+                                </div>
+                                <div className="relative z-10 mt-8">
+                                    <div className="w-16 h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+                                        <div className="h-full bg-tertiary w-3/4 shadow-[0_0_8px_#e9c400]"></div>
+                                    </div>
+                                    <span className="font-label text-[9px] text-on-surface-variant block mt-2 uppercase">Density Threshold</span>
+                                </div>
+                            </div>
+                            <div className="md:col-span-1 md:row-span-1 group relative overflow-hidden rounded-xl bg-surface-container-low p-6 flex flex-col justify-between border border-outline-variant/10">
+                                <div className="relative z-10">
+                                    <h3 className="font-headline text-xl font-bold text-on-background mb-1">항성 (Stars)</h3>
+                                    <p className="font-body text-[10px] text-on-surface-variant leading-tight">분광형별 항성 아카이브</p>
+                                </div>
+                                <div className="flex flex-wrap gap-1 mt-4">
+                                    <span className="w-6 h-6 rounded-full bg-white blur-[2px] opacity-80"></span>
+                                    <span className="w-6 h-6 rounded-full bg-yellow-200 blur-[2px] opacity-80"></span>
+                                    <span className="w-6 h-6 rounded-full bg-blue-300 blur-[2px] opacity-80"></span>
+                                    <span className="w-6 h-6 rounded-full bg-orange-400 blur-[2px] opacity-80"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* ── 오늘의 우주 섹션 ── */}
+                    <section className="py-24 px-8 max-w-7xl mx-auto border-t border-outline-variant/10">
+                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                            <div>
+                                <p className="font-label text-secondary text-[10px] tracking-[0.2em] uppercase mb-2">NASA × Claude AI</p>
+                                <h2 className="font-headline text-4xl font-bold text-on-background">오늘의 우주</h2>
+                                <p className="font-body text-on-surface-variant mt-2 max-w-md">NASA 오늘의 우주 사진과 Claude AI 한국어 해설을 실시간으로 확인하세요.</p>
+                            </div>
+                        </div>
+
+                        {apodLoading && (
+                            <div className="flex items-center gap-3 text-on-surface-variant font-label text-sm py-8">
+                                <span className="flex h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
+                                신호 수신 중...
+                            </div>
+                        )}
+                        {apodError && (
+                            <div className="bg-error-container/20 border border-error/30 rounded-sm px-4 py-3 text-error font-label text-sm mb-6">
+                                {apodError === 'NASA_KEY_MISSING' ? 'NASA API 키를 설정해주세요.' : '오류: ' + apodError}
+                            </div>
+                        )}
+                        {!apodLoading && !apod && !apodError && (
+                            <div className="text-center py-16 border border-outline-variant/10 rounded-xl">
+                                <span className="material-symbols-outlined text-5xl text-on-surface-variant/20 block mb-4">rocket_launch</span>
+                                <p className="font-label text-[10px] text-on-surface-variant uppercase tracking-widest mb-4">API 키를 설정하면 오늘의 우주 사진이 자동으로 로드됩니다</p>
+                            </div>
+                        )}
+                        {apod && (
+                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                                <div className="lg:col-span-7">
+                                    <div className="aspect-video overflow-hidden rounded-xl bg-surface-container-lowest relative">
+                                        {apod.media_type === 'video'
+                                            ? <iframe src={apod.url} className="w-full h-full" allowFullScreen title={apod.title}></iframe>
+                                            : <ApodImage apod={apod} />}
+                                        <div className="absolute top-4 left-4">
+                                            <span className="bg-primary/20 backdrop-blur-md text-primary font-label text-[9px] px-2 py-0.5 border border-primary/30 uppercase tracking-tighter">{apod.date}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="lg:col-span-5 space-y-6">
+                                    <div>
+                                        <p className="font-label text-[10px] uppercase tracking-widest text-secondary-fixed mb-2">제목</p>
+                                        <h3 className="font-headline text-2xl font-bold text-on-surface mb-1">{apod.title}</h3>
+                                        {apod.copyright && <p className="font-label text-[9px] text-outline">© {apod.copyright}</p>}
+                                    </div>
+                                    <div className="border-l-2 border-primary/20 pl-4">
+                                        <p className="font-label text-[10px] uppercase tracking-widest text-secondary-fixed mb-2">원문 설명</p>
+                                        <p className="font-body text-sm text-on-surface-variant leading-relaxed">{apod.explanation}</p>
+                                    </div>
+                                    {commentary && (
+                                        <div className="bg-primary/5 border border-primary/20 rounded-sm p-4">
+                                            <p className="font-label text-[10px] uppercase tracking-widest text-primary mb-2 flex items-center gap-1">
+                                                <span className="material-symbols-outlined text-sm">smart_toy</span>
+                                                AI 해설
+                                            </p>
+                                            <p className="font-body text-sm text-on-surface leading-relaxed">{commentary}</p>
+                                        </div>
+                                    )}
+                                    <button onClick={generateCommentary} disabled={commentaryLoading} className="flex items-center gap-2 px-5 py-2.5 bg-surface-container-high border border-primary/30 text-primary font-label font-bold text-xs uppercase tracking-widest rounded-sm hover:bg-surface-bright transition-all disabled:opacity-50 active:scale-95">
+                                        <span className="material-symbols-outlined text-sm">{commentaryLoading ? 'hourglass_empty' : 'translate'}</span>
+                                        {commentaryLoading ? '해설 생성 중...' : '✦ AI 한국어 해설 생성'}
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </section>
+
+                    {/* ── 내 생일의 우주 섹션 ── */}
+                    <section className="py-24 px-8 max-w-7xl mx-auto border-t border-outline-variant/10">
+                        <div className="mb-8">
+                            <p className="font-label text-tertiary text-[10px] tracking-[0.2em] uppercase mb-2">Birthday Space</p>
+                            <h2 className="font-headline text-4xl font-bold text-on-background mb-2">내 생일의 우주</h2>
+                            <p className="font-body text-on-surface-variant max-w-md">당신이 태어난 날, 우주는 어떤 모습이었을까요?</p>
+                        </div>
+                        <div className="flex flex-wrap gap-3 items-end mb-3">
+                            <div>
+                                <label className="font-label text-[10px] uppercase tracking-widest text-secondary-fixed block mb-2">날짜 입력</label>
+                                <input type="date" value={birthDate} onChange={function(e) { setBirthDate(e.target.value); }} min="1995-06-16" max={new Date().toISOString().split('T')[0]} className="bg-surface-container-lowest border border-outline-variant/30 text-on-surface rounded-sm px-4 py-2.5 font-label text-sm focus:outline-none focus:border-primary/50 [color-scheme:dark]" />
+                            </div>
+                            <button onClick={loadBirthdayApod} disabled={birthdayLoading || !birthDate} className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-primary to-on-primary-container text-on-primary font-label font-bold text-xs uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity disabled:opacity-40 active:scale-95">
+                                <span className="material-symbols-outlined text-sm">travel_explore</span>
+                                {birthdayLoading ? '탐색 중...' : '우주 탐색'}
+                            </button>
+                        </div>
+                        <p className="font-label text-[9px] text-outline mb-8">* NASA APOD는 1995년 6월 16일부터 제공됩니다</p>
+                        {birthdayError && (
+                            <div className="bg-error-container/20 border border-error/30 rounded-sm px-4 py-3 text-error font-label text-sm mb-6">{birthdayError}</div>
+                        )}
+                        {birthdayApod && (
+                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                                <div className="lg:col-span-7">
+                                    <div className="aspect-video overflow-hidden rounded-xl bg-surface-container-lowest relative">
+                                        {birthdayApod.media_type === 'video'
+                                            ? <iframe src={birthdayApod.url} className="w-full h-full" allowFullScreen title={birthdayApod.title}></iframe>
+                                            : <ApodImage apod={birthdayApod} />}
+                                        <div className="absolute top-4 left-4 flex gap-2">
+                                            <span className="bg-tertiary/20 backdrop-blur-md text-tertiary font-label text-[9px] px-2 py-0.5 border border-tertiary/30 uppercase tracking-tighter">{birthdayApod.date}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="lg:col-span-5 space-y-6">
+                                    <div>
+                                        <p className="font-label text-[10px] uppercase tracking-widest text-tertiary mb-2">그날의 우주</p>
+                                        <h3 className="font-headline text-2xl font-bold text-on-surface mb-1">{birthdayApod.title}</h3>
+                                    </div>
+                                    <div className="border-l-2 border-tertiary/20 pl-4">
+                                        <p className="font-body text-sm text-on-surface-variant leading-relaxed">{birthdayApod.explanation}</p>
+                                    </div>
+                                    {birthdayMsg && (
+                                        <div className="bg-tertiary/5 border border-tertiary/20 rounded-sm p-4">
+                                            <p className="font-label text-[10px] uppercase tracking-widest text-tertiary mb-2 flex items-center gap-1">
+                                                <span className="material-symbols-outlined text-sm">celebration</span>
+                                                AI 생일 메시지
+                                            </p>
+                                            <p className="font-body text-sm text-on-surface leading-relaxed">{birthdayMsg}</p>
+                                        </div>
+                                    )}
+                                    <button onClick={generateBirthdayMsg} disabled={birthdayMsgLoading} className="flex items-center gap-2 px-5 py-2.5 bg-surface-container-high border border-tertiary/30 text-tertiary font-label font-bold text-xs uppercase tracking-widest rounded-sm hover:bg-surface-bright transition-all disabled:opacity-50 active:scale-95">
+                                        <span className="material-symbols-outlined text-sm">{birthdayMsgLoading ? 'hourglass_empty' : 'celebration'}</span>
+                                        {birthdayMsgLoading ? '메시지 생성 중...' : '생일 메시지 생성'}
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </section>
+                </main>
+            );
+        };
+
+        const ArchivePage = () => {
+            const navigate = useNavigate();
+            const [activeFilter, setActiveFilter] = useState('all');
+
+            const typeKo = { 'Nebula': '성운', 'Planet': '행성', 'Star System': '항성계', 'Galaxy': '은하' };
+            const filters = [
+                { key: 'all', label: '전체' },
+                { key: 'Planet', label: '행성' },
+                { key: 'Nebula', label: '성운' },
+                { key: 'Star System', label: '항성계' },
+                { key: 'Galaxy', label: '은하' },
+            ];
+
+            const items = [
+                { id: 1, type: 'Nebula', title: 'Vela Pulsar', code: 'CO-84.2', desc: '강력한 자기장을 가진 회전하는 중성자별로, 전자기 복사 빔을 방출합니다.', distance: '950 광년', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDSfs8NO6MtaoSfElPVCzUxwlhFwYRYDTCgednpkhUe281YomTU-9v9Sm48nnNbRlzaf2A74CvsC6ov5HBh2UkcTyXTU8jIvcWsw6FtzrYA2vnho8-fXRn02PY4r8fBP8m7_ZK0nmBgGFRllXvGIn_KrVWvNlYE0lqYkowOSJD9r24MRm419XWnnfjqhqzP9cGRZJOy6HNjjDdCIr9y3hYubpuQAL4mJnJMjU3PMqV1naTVu24EIQRO0ATEh5kJ-xB6L_m5HNPDhp8' },
+                { id: 2, type: 'Planet', title: 'Kaitos-9', code: 'PX-11.9', desc: '적색 왜성을 공전하는 슈퍼지구로, 사파이어 같은 표면 성분이 특징입니다.', distance: '4.2 광년', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCgpPQ3_IBu2u4Fm0NoTFXmbhNVPekAb6D3IBUUW8oV8I4_Dh5yMpQHrgVrH8QJGTU8L1u9IB1qfO34XB8iu_Z-IfQVLSlrQv-eLnuTKYbgmVr5nIkzI-bevlZqgb37yHmeAKC3wZu5MKZscBVh33mhooKqOAlacxWoWo0ZU-am-lHYD9sC_CjdQLZoEDtgH57J9d0vESjBaKgbj5LoZ_gPdFs5ZtSg0jjbcMcixz86Elgsvy3-_Ce85ZPHge5DVsdccJmh-HuLzGE' },
+                { id: 3, type: 'Star System', title: 'Cygnus X-1', code: 'BH-01.0', desc: '블랙홀로 최초로 공인된 우주 천체. 강력한 X선 방출이 특징입니다.', distance: '6,070 광년', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBQR_pPiZ6s2xZ2JkHKjQrxHOPjkcVDaRZtl8iJWIOT5E-v_tMbjZuprAB7JekaK8217mo-PZJEauFCbwDw7sr-MohYgQFfTsSUb94Up3F3ZupmBO4c0-4Ov_T2eDceWQj7OKeaRfDjgQyXpcisszX-IKiAYrqY5oQFprAXwNgKTrfCvUFsFhEdBzknrHww398oPk4VHGegC2vzHj9Y43MRs9gy0kUnKXXZV5dD94z0YC8KHxY9PkRpLK668CbK5uZQD6SsPqgQMQ0' },
+                { id: 4, type: 'Galaxy', title: 'Sombrero M104', code: 'GX-55.2', desc: '비정상적으로 큰 중앙 팽대부와 두드러진 먼지 띠로 유명한 나선 은하입니다.', distance: '2,900만 광년', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC2AVdIqUqIfm8sqkevk3-sQ_BLGoRzyFdbxsw8nsvsSiq96br5FSigWy-6ItklvHhhls9Nr9KIRJI6SOSkYLXKlRrVswUqD22n0CF3un3Pp1CFzqudFW6kGUiTeOkGY4ylVGtvITYB0-IkrpDhXwlqQ484jjVIPlCM25P75HSstehc2KZkV6FI3a9pj-FNUNHn-NMgL66L9ys5qeUJfCKUsZun-LXrp3QWy6adARQSpA4lJXmLas1t_eiyge7xrXalVd5CPfL_PB0' },
+            ];
+
+            const filtered = activeFilter === 'all' ? items : items.filter(function(i) { return i.type === activeFilter; });
+
+            return (
+                <main className="flex-grow px-8 py-12 max-w-7xl mx-auto w-full">
+                    <header className="mb-12">
+                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                            <div>
+                                <p className="font-label text-secondary text-[10px] tracking-[0.2em] uppercase mb-2">중앙 저장소</p>
+                                <h1 className="font-headline text-5xl font-bold text-on-surface tracking-tighter">천체 아카이브 <span className="text-xl font-light text-on-surface-variant/40">The Celestial Archive</span></h1>
+                            </div>
+                            <div className="flex gap-2">
+                                <span className="font-label text-[10px] text-outline px-3 py-1 border border-outline-variant rounded-full">INDEX_STATUS: ACTIVE</span>
+                                <span className="font-label text-[10px] text-secondary-fixed px-3 py-1 border border-secondary-fixed/30 rounded-full">TOTAL_ENTRIES: 1,204</span>
+                            </div>
+                        </div>
+                    </header>
+                    <section className="mb-12 flex flex-col gap-6">
+                        <div className="flex flex-wrap items-center gap-4">
+                            <div className="flex items-center gap-2 bg-surface-container-low p-1 rounded-lg">
+                                {filters.map(function(f) {
+                                    return (
+                                        <button key={f.key} onClick={function() { setActiveFilter(f.key); }} className={'px-4 py-2 text-xs font-label uppercase tracking-widest rounded-md transition-colors ' + (activeFilter === f.key ? 'bg-primary text-on-primary' : 'text-on-surface-variant hover:text-primary')}>
+                                            {f.label}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                            <span className="font-label text-[10px] text-on-surface-variant">{filtered.length}개 항목</span>
+                        </div>
+                    </section>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {filtered.length === 0 ? (
+                            <div className="col-span-2 text-center py-16">
+                                <span className="material-symbols-outlined text-5xl text-on-surface-variant/30 block mb-4">search_off</span>
+                                <p className="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">해당 카테고리에 항목이 없습니다</p>
+                            </div>
+                        ) : filtered.map(function(item) {
+                            return (
+                                <article onClick={function() { navigate('/detail', { state: item }); }} key={item.id} className="group relative flex flex-col bg-surface-container-low border border-outline-variant/5 hover:bg-surface-bright transition-all duration-500 overflow-hidden cursor-pointer">
+                                    <div className="aspect-video relative overflow-hidden">
+                                        <img alt={item.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" src={item.img} loading="lazy"/>
+                                        <div className="absolute top-4 left-4">
+                                            <span className="bg-primary/20 backdrop-blur-md text-primary font-label text-[9px] px-2 py-0.5 border border-primary/30 uppercase tracking-tighter">{typeKo[item.type] || item.type}</span>
+                                        </div>
+                                    </div>
+                                    <div className="p-6 flex flex-col flex-grow">
+                                        <div className="flex justify-between items-start mb-4">
+                                            <h3 className="font-headline text-2xl font-medium text-primary tracking-tight">{item.title}</h3>
+                                            <span className="font-label text-[10px] text-secondary tracking-widest">{item.code}</span>
+                                        </div>
+                                        <p className="text-on-surface-variant text-sm leading-relaxed mb-6 font-body">{item.desc}</p>
+                                        <div className="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+                                            <div>
+                                                <p className="font-label text-[9px] text-outline uppercase">거리</p>
+                                                <p className="font-headline text-sm text-secondary-fixed">{item.distance}</p>
+                                            </div>
+                                            <span className="text-primary hover:text-secondary-fixed transition-colors material-symbols-outlined">arrow_outward</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            );
+                        })}
+                    </div>
+                </main>
+            );
+        };
+
+        const MyStarSystemPage = () => {
+            const navigate = useNavigate();
+            const [toast, setToast] = useState('');
+
+            const showToast = (msg) => {
+                setToast(msg);
+                setTimeout(function() { setToast(''); }, 2500);
+            };
+
+            return (
+                <main className="max-w-7xl mx-auto px-6 py-12 md:py-20 relative">
+                    {toast && (
+                        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-surface-container-high border border-primary/30 text-primary font-label text-xs px-6 py-3 rounded-full flex items-center gap-2 shadow-lg">
+                            <span className="material-symbols-outlined text-sm">check_circle</span>
+                            {toast}
+                        </div>
+                    )}
+                    <header className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+                        <div className="space-y-2">
+                            <div className="flex items-center gap-3 mb-4">
+                                <span className="h-px w-8 bg-secondary-fixed"></span>
+                                <span className="font-label text-secondary-fixed text-[10px] uppercase tracking-[0.2em]">Archivist ID: VEGA-942</span>
+                            </div>
+                            <h1 className="text-5xl md:text-7xl font-headline font-bold text-primary tracking-tighter">나의 항성계</h1>
+                            <p className="text-on-surface-variant max-w-lg font-body font-light text-lg">우주 아카이브에서 선별된 노드. 14개 섹터와 3.2TB의 항성 데이터를 추적 중입니다.</p>
+                        </div>
+                        <div className="grid grid-cols-2 md:flex gap-4">
+                            <div className="bg-surface-container-low p-6 rounded-lg min-w-[140px] border-l-2 border-secondary/20">
+                                <p className="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">총 발견</p>
+                                <p className="text-3xl font-headline font-bold text-secondary">1,204</p>
+                            </div>
+                            <div className="bg-surface-container-low p-6 rounded-lg min-w-[140px] border-l-2 border-primary/20">
+                                <p className="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">아카이브 등급</p>
+                                <p className="text-3xl font-headline font-bold text-primary">Master</p>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-16">
+                        <div className="md:col-span-8 bg-surface-container-low rounded-xl p-8 relative overflow-hidden group">
+                            <div className="relative z-10 flex flex-col h-full justify-between">
+                                <div>
+                                    <div className="flex justify-between items-start mb-8">
+                                        <h3 className="text-2xl font-headline font-medium text-on-surface">독서 진행률</h3>
+                                        <span className="font-label text-xs text-secondary-fixed bg-secondary-fixed/10 px-3 py-1 rounded-full">시스템 활성</span>
+                                    </div>
+                                    <div className="space-y-6">
+                                        <div className="space-y-2">
+                                            <div className="flex justify-between text-sm font-label uppercase tracking-tighter text-on-surface-variant">
+                                                <span>Cosmological Origins: Part II</span>
+                                                <span className="text-secondary">84%</span>
+                                            </div>
+                                            <div className="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+                                                <div className="h-full bg-secondary bloom-indicator" style={{width: '84%'}}></div>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <div className="flex justify-between text-sm font-label uppercase tracking-tighter text-on-surface-variant">
+                                                <span>Dark Matter Synthesis</span>
+                                                <span className="text-primary">31%</span>
+                                            </div>
+                                            <div className="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+                                                <div className="h-full bg-primary" style={{width: '31%'}}></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="mt-12 flex gap-4">
+                                    <button onClick={function() { navigate('/detail'); }} className="bg-gradient-to-r from-primary to-on-primary-container text-on-primary px-6 py-3 rounded-md font-label font-bold text-xs uppercase tracking-widest transition-transform hover:scale-105 active:scale-95">
+                                        마지막 기록 계속하기
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="absolute -right-20 -bottom-20 opacity-20 pointer-events-none group-hover:opacity-30 transition-opacity">
+                                <img className="w-96 h-96 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx3x2JYOoLi9nRid8L8zf5B03-XF1nF7dvZetE848_HkURSUSS_DCCN3ebDQzl7CjWDpoMsLYUdwVxR5CQoR69k6yat7D0catb5JcmPeT0TVLJLK4qsMSjTkO_ZuE0xvP0LK0SAHhHCZx-LrGKRJ8tNb5IBySDWjV6F0wLEsA0HSU6SSIcf3wJTO_2Iw98zvvUSOpK8_AtH8IpixMlAvQP7OkytSUEjI07a6wIMQ49dQgyZ-zL_yO8WfotG4peZE1HurNs4kUqPKc" alt="가스 거성" loading="lazy"/>
+                            </div>
+                        </div>
+                        <div className="md:col-span-4 space-y-6">
+                            <div className="bg-surface-container-high p-6 rounded-xl border border-outline-variant/10">
+                                <h4 className="font-label text-[10px] uppercase tracking-widest text-secondary-fixed mb-6 flex items-center gap-2">
+                                    <span className="material-symbols-outlined text-sm">history</span> 최근 방문
+                                </h4>
+                                <div className="space-y-6">
+                                    <div onClick={function() { navigate('/detail'); }} className="flex gap-4 items-center group cursor-pointer">
+                                        <div className="w-12 h-12 bg-surface-container-lowest rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-surface transition-colors">
+                                            <span className="material-symbols-outlined">auto_stories</span>
+                                        </div>
+                                        <div>
+                                            <p className="font-headline text-on-surface group-hover:text-primary transition-colors">The Andromeda Scrolls</p>
+                                            <p className="font-label text-[10px] text-on-surface-variant uppercase tracking-tighter">2시간 전 수정</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section className="space-y-8">
+                        <div className="flex justify-between items-end border-b border-outline-variant/10 pb-4">
+                            <h2 className="font-headline text-3xl text-on-surface">큐레이션된 항성계</h2>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            {[
+                                { id: 1, name: '고대 신호', color: 'text-primary', count: '42 파일', coord: '0,0,0 // SECTOR 7', icon: 'folder_open' },
+                                { id: 2, name: '적색 거성', color: 'text-secondary', count: '12 파일', coord: '184,2,9 // SECTOR 1', icon: 'star' },
+                                { id: 3, name: '엔진 구조', color: 'text-tertiary', count: '89 파일', coord: '45,9,0 // SECTOR 4', icon: 'schema' }
+                            ].map(function(sys) {
+                                return (
+                                    <div key={sys.id} onClick={function() { navigate('/archive'); }} className="bg-surface-container-lowest hover:bg-surface-container-high transition-all duration-300 p-6 rounded-lg border border-transparent hover:border-primary/20 cursor-pointer group">
+                                        <div className="flex justify-between items-start mb-12">
+                                            <span className={'material-symbols-outlined text-4xl ' + sys.color + ' transition-transform group-hover:scale-110'}>{sys.icon}</span>
+                                            <span className="font-label text-[10px] text-on-surface-variant">{sys.count}</span>
+                                        </div>
+                                        <h5 className="font-headline text-lg mb-1">{sys.name}</h5>
+                                        <p className="font-label text-[10px] text-on-surface-variant tracking-widest uppercase">COORD: {sys.coord}</p>
+                                    </div>
+                                );
+                            })}
+                            <div onClick={function() { showToast('새 항성계 노드를 생성했습니다'); }} className="bg-surface-container-lowest hover:bg-surface-container-high transition-all duration-300 p-6 rounded-lg border border-transparent hover:border-primary/20 cursor-pointer group">
+                                <div className="flex justify-between items-start mb-12">
+                                    <span className="material-symbols-outlined text-4xl text-on-surface-variant transition-transform group-hover:scale-110">add_circle</span>
+                                    <span className="font-label text-[10px] text-on-surface-variant">신규</span>
+                                </div>
+                                <h5 className="font-headline text-lg mb-1">탐사 범위 확장</h5>
+                                <p className="font-label text-[10px] text-on-surface-variant tracking-widest uppercase">새 지식 노드 생성</p>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            );
+        };
+
+        const DetailPage = () => {
+            const location = useLocation();
+            const navigate = useNavigate();
+            const item = location.state;
+            const [toast, setToast] = useState('');
+
+            const typeKo = { 'Nebula': '성운', 'Planet': '행성', 'Star System': '항성계', 'Galaxy': '은하' };
+            const typeInfo = {
+                'Nebula':      { composition: '이온화 가스, 먼지, 플라즈마', bar: '68%', label: '이온화 밀도 68%' },
+                'Planet':      { composition: '암석, 금속 산화물, 대기층',   bar: '91%', label: '표면 밀도 91%' },
+                'Star System': { composition: '수소, 헬륨, X선 방사체',      bar: '99%', label: '중력 임계치 99%' },
+                'Galaxy':      { composition: '항성, 암흑물질, 성간 가스',   bar: '82%', label: '항성 밀도 82%' },
+            };
+
+            const showToast = (msg) => {
+                setToast(msg);
+                setTimeout(function() { setToast(''); }, 2500);
+            };
+
+            if (!item) {
+                return (
+                    <main className="min-h-screen flex items-center justify-center">
+                        <div className="text-center space-y-4">
+                            <span className="material-symbols-outlined text-5xl text-on-surface-variant/30 block">search_off</span>
+                            <p className="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">천체를 선택해주세요</p>
+                            <button onClick={function() { navigate('/archive'); }} className="px-6 py-3 border border-outline-variant/30 text-primary font-label text-xs tracking-widest rounded-sm hover:bg-surface-container-high transition-colors">
+                                아카이브로 이동
+                            </button>
+                        </div>
+                    </main>
+                );
+            }
+
+            const info = typeInfo[item.type] || typeInfo['Galaxy'];
+            const words = item.title.toUpperCase().split(' ');
+            const lastWord = words[words.length - 1];
+            const firstWords = words.slice(0, -1).join(' ');
+
+            return (
+                <main className="min-h-screen nebula-gradient relative">
+                    {toast && (
+                        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-surface-container-high border border-primary/30 text-primary font-label text-xs px-6 py-3 rounded-full flex items-center gap-2 shadow-lg">
+                            <span className="material-symbols-outlined text-sm">check_circle</span>
+                            {toast}
+                        </div>
+                    )}
+                    <section className="px-8 pt-12 pb-6">
+                        <div className="flex items-center gap-2 mb-4">
+                            <button onClick={function() { navigate('/archive'); }} className="text-[10px] font-label uppercase tracking-[0.2em] text-secondary-fixed/50 hover:text-secondary-fixed transition-colors">아카이브</button>
+                            <span className="material-symbols-outlined text-[10px] text-outline">chevron_right</span>
+                            <span className="text-[10px] font-label uppercase tracking-[0.2em] text-secondary-fixed">{typeKo[item.type] || item.type}</span>
+                        </div>
+                        <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter text-on-surface leading-none">
+                            {firstWords && <span>{firstWords} </span>}<span className="text-primary">{lastWord}</span>
+                        </h1>
+                        <div className="flex gap-4 mt-4">
+                            <div className="bg-secondary-container/10 border border-secondary-fixed/20 px-3 py-1 rounded-sm flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-secondary-fixed rounded-full bloom-effect"></span>
+                                <span className="text-[10px] font-label uppercase tracking-widest text-secondary-fixed">Catalog ID: {item.code}</span>
+                            </div>
+                            <div className="bg-surface-container-high border border-outline-variant/30 px-3 py-1 rounded-sm flex items-center gap-2">
+                                <span className="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">보관 상태: 검증됨</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24">
+                        <div className="lg:col-span-4 space-y-12">
+                            <div className="border-l-2 border-primary/20 pl-6 space-y-8">
+                                <p className="text-on-surface-variant font-body leading-relaxed max-w-md">{item.desc}</p>
+                                <div className="grid grid-cols-1 gap-6">
+                                    <div className="group">
+                                        <label className="text-[10px] font-label uppercase tracking-[0.15em] text-secondary-fixed block mb-2">구성 성분</label>
+                                        <div className="bg-surface-container-low p-4 rounded-sm border-l border-primary/10 group-hover:bg-surface-container transition-colors">
+                                            <span className="font-headline text-xl text-on-surface">{info.composition}</span>
+                                            <div className="mt-3 w-full h-[2px] bg-surface-variant">
+                                                <div className="h-full bg-secondary-fixed bloom-effect" style={{width: info.bar}}></div>
+                                            </div>
+                                            <div className="flex justify-between mt-1">
+                                                <span className="text-[9px] font-label text-outline uppercase tracking-tighter">{info.label}</span>
+                                                <span className="text-[9px] font-label text-outline uppercase tracking-tighter">안정</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="group">
+                                        <label className="text-[10px] font-label uppercase tracking-[0.15em] text-secondary-fixed block mb-2">거리</label>
+                                        <div className="bg-surface-container-low p-4 rounded-sm border-l border-primary/10 group-hover:bg-surface-container transition-colors">
+                                            <span className="font-headline text-3xl font-bold text-on-surface tabular-nums">{item.distance}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="pt-6">
+                                <button onClick={function() { showToast(item.title + '이(가) 나의 항성계에 추가되었습니다'); }} className="w-full bg-gradient-to-r from-primary to-on-primary-container text-on-primary font-headline font-bold py-4 rounded-md flex items-center justify-center gap-3 hover:opacity-90 transition-opacity active:scale-[0.98] duration-200">
+                                    <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
+                                    나의 항성계에 추가
+                                </button>
+                                <button onClick={function() { showToast('원격측정 데이터를 내보내는 중...'); }} className="w-full mt-4 border border-outline-variant/30 text-primary font-label text-xs tracking-widest py-3 rounded-md hover:bg-surface-container-high transition-colors">
+                                    원격측정 데이터 내보내기
+                                </button>
+                            </div>
+                        </div>
+                        <div className="lg:col-span-8 relative">
+                            <div className="aspect-[4/5] md:aspect-[16/10] overflow-hidden rounded-xl bg-surface-container-lowest relative group">
+                                <img alt={item.title} className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2000ms]" src={item.img} loading="lazy"/>
+                                <div className="absolute inset-0 pointer-events-none border-[12px] border-surface/40"></div>
+                                <div className="absolute top-10 left-10 text-secondary-fixed font-label text-[10px] tracking-[0.3em] space-y-1">
+                                    <p>CATALOG: {item.code}</p>
+                                    <p className="opacity-50">TYPE: {(typeKo[item.type] || item.type).toUpperCase()}</p>
+                                </div>
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-primary/20 rounded-full flex items-center justify-center">
+                                    <div className="w-2 h-2 bg-primary rounded-full bloom-effect"></div>
+                                    <div className="absolute w-full h-[1px] bg-primary/10"></div>
+                                    <div className="absolute h-full w-[1px] bg-primary/10"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            );
+        };
+
+        // --- ApodImage: apod.url 우선, 실패 시 NASA Image Library → 텍스트 대체 ---
+        const ApodImage = ({ apod }) => {
+            const [imgSrc, setImgSrc] = useState(apod.url);
+            const [fallback, setFallback] = useState(false);
+            const retried = React.useRef(false);
+
+            const onError = () => {
+                if (!retried.current) {
+                    retried.current = true;
+                    var q = encodeURIComponent(apod.title);
+                    fetch('https://images-api.nasa.gov/search?q=' + q + '&media_type=image')
+                        .then(function(r) { return r.json(); })
+                        .then(function(d) {
+                            var its = d.collection && d.collection.items;
+                            var lnk = its && its[0] && its[0].links && its[0].links[0];
+                            if (lnk) { setImgSrc(lnk.href); }
+                            else { setFallback(true); }
+                        })
+                        .catch(function() { setFallback(true); });
+                } else {
+                    setFallback(true);
+                }
+            };
+
+            if (fallback) {
+                return (
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-container/30 to-surface-container-lowest">
+                        <div className="text-center p-6">
+                            <span className="material-symbols-outlined text-5xl text-primary/40 block mb-3">star_border</span>
+                            <p className="font-headline text-primary text-lg">{apod.title}</p>
+                        </div>
+                    </div>
+                );
+            }
+            return <img src={imgSrc} alt={apod.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" onError={onError} loading="lazy" />;
+        };
+
+        // --- SettingsModal ---
+        const SettingsModal = ({ onClose, onSaved }) => {
+            const [nasaKey, setNasaKey] = useState(getApiKey('NASA_API_KEY'));
+            const [claudeKey, setClaudeKey] = useState(getApiKey('CLAUDE_API_KEY'));
+            const [saved, setSaved] = useState(false);
+
+            const handleSave = () => {
+                saveApiKey('NASA_API_KEY', nasaKey);
+                saveApiKey('CLAUDE_API_KEY', claudeKey);
+                setSaved(true);
+                setTimeout(function() { onSaved(); onClose(); }, 1500);
+            };
+
+            return (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center">
+                    <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={onClose}></div>
+                    <div className="relative z-10 bg-surface-container-low border border-outline-variant/30 rounded-xl p-8 w-full max-w-md mx-4 space-y-6">
+                        <div className="flex justify-between items-center">
+                            <h3 className="font-headline text-xl text-primary flex items-center gap-2">
+                                <span className="material-symbols-outlined">key</span>
+                                API 키 설정
+                            </h3>
+                            <button onClick={onClose} className="text-on-surface-variant hover:text-on-surface transition-colors">
+                                <span className="material-symbols-outlined">close</span>
+                            </button>
+                        </div>
+                        <p className="font-body text-xs text-on-surface-variant">키는 브라우저 로컬 스토리지에만 저장되며 외부로 전송되지 않습니다.</p>
+                        <div className="space-y-4">
+                            <div>
+                                <label className="font-label text-[10px] uppercase tracking-widest text-secondary-fixed block mb-2">NASA API KEY</label>
+                                <input type="password" value={nasaKey} onChange={function(e) { setNasaKey(e.target.value); }} placeholder="NASA API 키 입력..." className="w-full bg-surface-container-lowest border border-outline-variant/30 text-on-surface placeholder:text-on-surface-variant/30 rounded-sm px-4 py-2.5 font-label text-sm focus:outline-none focus:border-primary/50" />
+                            </div>
+                            <div>
+                                <label className="font-label text-[10px] uppercase tracking-widest text-secondary-fixed block mb-2">ANTHROPIC API KEY</label>
+                                <input type="password" value={claudeKey} onChange={function(e) { setClaudeKey(e.target.value); }} placeholder="Anthropic API 키 입력..." className="w-full bg-surface-container-lowest border border-outline-variant/30 text-on-surface placeholder:text-on-surface-variant/30 rounded-sm px-4 py-2.5 font-label text-sm focus:outline-none focus:border-primary/50" />
+                            </div>
+                        </div>
+                        {saved ? (
+                            <div className="flex items-center gap-2 text-secondary font-label text-sm">
+                                <span className="material-symbols-outlined text-sm">check_circle</span>
+                                키가 저장되었습니다
+                            </div>
+                        ) : (
+                            <div className="flex gap-3">
+                                <button onClick={onClose} className="flex-1 px-6 py-3 border border-outline-variant/30 text-on-surface-variant font-label font-bold text-xs uppercase tracking-widest rounded-sm hover:bg-surface-container-high transition-colors active:scale-95">
+                                    취소
+                                </button>
+                                <button onClick={handleSave} className="flex-1 px-6 py-3 bg-gradient-to-r from-primary to-on-primary-container text-on-primary font-label font-bold text-xs uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity active:scale-95">
+                                    저장
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        const CosmosToday = () => {
+            const FALLBACK_COMMENTARY = '우주의 광활함 속에서 포착된 이 경이로운 장면은, 우리 존재가 얼마나 광대한 무대 위에 펼쳐져 있는지를 일깨워 줍니다. 수억 광년의 거리를 가로질러 도달한 빛 속에는 인류의 상상력이 닿을 수 없는 깊이가 담겨 있습니다. 오늘도 우주는 묵묵히, 그러나 경이롭게 우리 곁에 펼쳐져 있습니다.';
+            const FALLBACK_BIRTHDAY  = '당신이 태어난 그 순간, 우주는 수십억 년의 여정 끝에 이 아름다운 장면을 완성했습니다. 별빛이 당신의 탄생을 축하하듯 반짝였고, 광대한 우주는 당신이라는 존재를 이 세상에 맞이하기 위해 준비되어 있었습니다. 우주적 관점에서 당신의 탄생은 기적 그 자체입니다. 생일을 진심으로 축하합니다.';
+
+            const [apod, setApod] = useState(null);
+            const [loading, setLoading] = useState(false);
+            const [error, setError] = useState(null);
+            const [commentary, setCommentary] = useState(null);
+            const [commentaryLoading, setCommentaryLoading] = useState(false);
+            const [birthDate, setBirthDate] = useState('');
+            const [birthdayApod, setBirthdayApod] = useState(null);
+            const [birthdayLoading, setBirthdayLoading] = useState(false);
+            const [birthdayMsg, setBirthdayMsg] = useState(null);
+            const [birthdayMsgLoading, setBirthdayMsgLoading] = useState(false);
+            const [birthdayError, setBirthdayError] = useState(null);
+
+            const loadToday = async () => {
+                setLoading(true);
+                setError(null);
+                setCommentary(null);
+                try {
+                    const data = await fetchNASAApod();
+                    setApod(data);
+                } catch (e) {
+                    setError(e.message);
+                } finally {
+                    setLoading(false);
+                }
+            };
+
+            useEffect(() => {
+                if (getApiKey('NASA_API_KEY')) loadToday();
+            }, []);
+
+            const handleKeysSaved = () => {
+                if (getApiKey('NASA_API_KEY')) loadToday();
+            };
+
+            const generateCommentary = async () => {
+                if (!apod) return;
+                setCommentaryLoading(true);
+                try {
+                    const text = await fetchClaudeKorean(apod, 'commentary');
+                    setCommentary(text);
+                } catch (e) {
+                    setCommentary(FALLBACK_COMMENTARY);
+                } finally {
+                    setCommentaryLoading(false);
+                }
+            };
+
+            const loadBirthdayApod = async () => {
+                if (!birthDate) return;
+                setBirthdayLoading(true);
+                setBirthdayError(null);
+                setBirthdayApod(null);
+                setBirthdayMsg(null);
+                try {
+                    const data = await fetchNASAApod(birthDate);
+                    setBirthdayApod(data);
+                } catch (e) {
+                    setBirthdayError(e.message === 'NASA_KEY_MISSING' ? 'NASA API 키를 먼저 설정해주세요.' : e.message);
+                } finally {
+                    setBirthdayLoading(false);
+                }
+            };
+
+            const generateBirthdayMsg = async () => {
+                if (!birthdayApod) return;
+                setBirthdayMsgLoading(true);
+                try {
+                    const text = await fetchClaudeKorean(birthdayApod, 'birthday');
+                    setBirthdayMsg(text);
+                } catch (e) {
+                    setBirthdayMsg(FALLBACK_BIRTHDAY);
+                } finally {
+                    setBirthdayMsgLoading(false);
+                }
+            };
+
+            return (
+                <main className="min-h-screen">
+
+                    <section className="px-8 pt-12 pb-6 relative">
+                        <div className="absolute inset-0 z-0 pointer-events-none">
+                            <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px]"></div>
+                        </div>
+                        <div className="relative z-10 max-w-7xl mx-auto">
+                            <p className="font-label text-secondary text-[10px] tracking-[0.2em] uppercase mb-2">NASA × Claude AI</p>
+                            <h1 className="font-headline text-5xl font-bold text-on-surface tracking-tighter mb-4">오늘의 우주</h1>
+                            <p className="font-body text-on-surface-variant max-w-lg mb-4">NASA 오늘의 우주 사진과 Claude AI의 한국어 해설. 당신의 생일날 우주는 어떤 모습이었는지 탐험하세요.</p>
+                        </div>
+                    </section>
+
+                    <section className="px-8 pb-16 max-w-7xl mx-auto">
+                        <div className="flex items-center gap-3 mb-8">
+                            <h2 className="font-headline text-3xl font-bold text-on-surface">오늘의 우주 사진</h2>
+                            <span className="font-headline text-base text-on-surface-variant/40 font-light">Today's Universe</span>
+                            <span className="font-label text-[9px] text-secondary-fixed border border-secondary-fixed/30 px-2 py-0.5 uppercase tracking-widest">NASA APOD</span>
+                        </div>
+
+                        {loading && (
+                            <div className="flex items-center gap-3 text-on-surface-variant font-label text-sm py-8">
+                                <span className="flex h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
+                                신호 수신 중...
+                            </div>
+                        )}
+
+                        {error && (
+                            <div className="bg-error-container/20 border border-error/30 rounded-sm px-4 py-3 text-error font-label text-sm mb-6">
+                                {error === 'NASA_KEY_MISSING' ? 'NASA API 키를 먼저 설정해주세요.' : `오류: ${error}`}
+                            </div>
+                        )}
+
+                        {apod && (
+                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                                <div className="lg:col-span-7">
+                                    <div className="aspect-video overflow-hidden rounded-xl bg-surface-container-lowest relative">
+                                        {apod.media_type === 'video' ? (
+                                            <iframe src={apod.url} className="w-full h-full" allowFullScreen title={apod.title}></iframe>
+                                        ) : (
+                                            <ApodImage apod={apod} />
+                                        )}
+                                        <div className="absolute top-4 left-4">
+                                            <span className="bg-primary/20 backdrop-blur-md text-primary font-label text-[9px] px-2 py-0.5 border border-primary/30 uppercase tracking-tighter">{apod.date}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="lg:col-span-5 space-y-6">
+                                    <div>
+                                        <p className="font-label text-[10px] uppercase tracking-widest text-secondary-fixed mb-2">제목</p>
+                                        <h3 className="font-headline text-2xl font-bold text-on-surface mb-1">{apod.title}</h3>
+                                        {apod.copyright && <p className="font-label text-[9px] text-outline">© {apod.copyright}</p>}
+                                    </div>
+                                    <div className="border-l-2 border-primary/20 pl-4">
+                                        <p className="font-label text-[10px] uppercase tracking-widest text-secondary-fixed mb-2">원문 설명</p>
+                                        <p className="font-body text-sm text-on-surface-variant leading-relaxed">{apod.explanation}</p>
+                                    </div>
+                                    {commentary && (
+                                        <div className="bg-primary/5 border border-primary/20 rounded-sm p-4">
+                                            <p className="font-label text-[10px] uppercase tracking-widest text-primary mb-2 flex items-center gap-1">
+                                                <span className="material-symbols-outlined text-sm">smart_toy</span>
+                                                AI 해설
+                                            </p>
+                                            <p className="font-body text-sm text-on-surface leading-relaxed">{commentary}</p>
+                                        </div>
+                                    )}
+                                    <button onClick={generateCommentary} disabled={commentaryLoading} className="flex items-center gap-2 px-5 py-2.5 bg-surface-container-high border border-primary/30 text-primary font-label font-bold text-xs uppercase tracking-widest rounded-sm hover:bg-surface-bright transition-all disabled:opacity-50 active:scale-95">
+                                        <span className="material-symbols-outlined text-sm">{commentaryLoading ? 'hourglass_empty' : 'translate'}</span>
+                                        {commentaryLoading ? '해설 생성 중...' : '✦ AI 한국어 해설 생성'}
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        {!loading && !apod && !error && (
+                            <div className="text-center py-16">
+                                <span className="material-symbols-outlined text-5xl text-on-surface-variant/30 block mb-4">rocket_launch</span>
+                                <p className="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">API 키를 설정하고 탐사를 시작하세요</p>
+                            </div>
+                        )}
+                    </section>
+
+                    <section className="px-8 pb-24 max-w-7xl mx-auto border-t border-outline-variant/10 pt-16">
+                        <div className="flex items-center gap-3 mb-4">
+                            <h2 className="font-headline text-3xl font-bold text-on-surface">내 생일의 우주</h2>
+                            <span className="font-headline text-base text-on-surface-variant/40 font-light">Birthday Universe</span>
+                            <span className="font-label text-[9px] text-tertiary border border-tertiary/30 px-2 py-0.5 uppercase tracking-widest">Birthday Space</span>
+                        </div>
+                        <p className="font-body text-on-surface-variant mb-8 max-w-md">당신이 태어난 날, 우주는 어떤 모습이었을까요? 날짜를 입력하면 그날의 우주 사진과 생일 메시지를 드립니다.</p>
+
+                        <div className="flex flex-wrap gap-3 items-end mb-3">
+                            <div>
+                                <label className="font-label text-[10px] uppercase tracking-widest text-secondary-fixed block mb-2">날짜 입력</label>
+                                <input type="date" value={birthDate} onChange={e => setBirthDate(e.target.value)} min="1995-06-16" max={new Date().toISOString().split('T')[0]} className="bg-surface-container-lowest border border-outline-variant/30 text-on-surface rounded-sm px-4 py-2.5 font-label text-sm focus:outline-none focus:border-primary/50 [color-scheme:dark]" />
+                            </div>
+                            <button onClick={loadBirthdayApod} disabled={birthdayLoading || !birthDate} className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-primary to-on-primary-container text-on-primary font-label font-bold text-xs uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity disabled:opacity-40 active:scale-95">
+                                <span className="material-symbols-outlined text-sm">travel_explore</span>
+                                {birthdayLoading ? '탐색 중...' : '우주 탐색'}
+                            </button>
+                        </div>
+                        <p className="font-label text-[9px] text-outline mb-8">* NASA APOD는 1995년 6월 16일부터 제공됩니다</p>
+
+                        {birthdayError && (
+                            <div className="bg-error-container/20 border border-error/30 rounded-sm px-4 py-3 text-error font-label text-sm mb-6">
+                                {birthdayError}
+                            </div>
+                        )}
+
+                        {birthdayApod && (
+                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                                <div className="lg:col-span-7">
+                                    <div className="aspect-video overflow-hidden rounded-xl bg-surface-container-lowest relative">
+                                        {birthdayApod.media_type === 'video' ? (
+                                            <iframe src={birthdayApod.url} className="w-full h-full" allowFullScreen title={birthdayApod.title}></iframe>
+                                        ) : (
+                                            <ApodImage apod={birthdayApod} />
+                                        )}
+                                        <div className="absolute top-4 left-4 flex gap-2">
+                                            <span className="bg-tertiary/20 backdrop-blur-md text-tertiary font-label text-[9px] px-2 py-0.5 border border-tertiary/30 uppercase tracking-tighter">{birthdayApod.date}</span>
+                                            <span className="bg-surface-container/80 backdrop-blur-md text-secondary-fixed font-label text-[9px] px-2 py-0.5 border border-secondary-fixed/20 uppercase tracking-tighter">그날의 우주</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="lg:col-span-5 space-y-6">
+                                    <div>
+                                        <p className="font-label text-[10px] uppercase tracking-widest text-tertiary mb-2">그날의 우주</p>
+                                        <h3 className="font-headline text-2xl font-bold text-on-surface mb-1">{birthdayApod.title}</h3>
+                                        {birthdayApod.copyright && <p className="font-label text-[9px] text-outline">© {birthdayApod.copyright}</p>}
+                                    </div>
+                                    <div className="border-l-2 border-tertiary/20 pl-4">
+                                        <p className="font-body text-sm text-on-surface-variant leading-relaxed">{birthdayApod.explanation}</p>
+                                    </div>
+                                    {birthdayMsg && (
+                                        <div className="bg-tertiary/5 border border-tertiary/20 rounded-sm p-4">
+                                            <p className="font-label text-[10px] uppercase tracking-widest text-tertiary mb-2 flex items-center gap-1">
+                                                <span className="material-symbols-outlined text-sm">celebration</span>
+                                                AI 생일 메시지
+                                            </p>
+                                            <p className="font-body text-sm text-on-surface leading-relaxed">{birthdayMsg}</p>
+                                        </div>
+                                    )}
+                                    <button onClick={generateBirthdayMsg} disabled={birthdayMsgLoading} className="flex items-center gap-2 px-5 py-2.5 bg-surface-container-high border border-tertiary/30 text-tertiary font-label font-bold text-xs uppercase tracking-widest rounded-sm hover:bg-surface-bright transition-all disabled:opacity-50 active:scale-95">
+                                        <span className="material-symbols-outlined text-sm">{birthdayMsgLoading ? 'hourglass_empty' : 'celebration'}</span>
+                                        {birthdayMsgLoading ? '메시지 생성 중...' : '생일 메시지 생성'}
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </section>
+                </main>
+            );
+        };
+
+        const PricingPage = () => (
+            <main className="min-h-screen px-8 py-16 max-w-7xl mx-auto">
+                <header className="mb-16 text-center">
+                    <p className="font-label text-secondary text-[10px] tracking-[0.2em] uppercase mb-2">접근 등급</p>
+                    <h1 className="font-headline text-5xl font-bold text-on-background tracking-tighter mb-4">우주 탐사 요금제</h1>
+                    <p className="font-body text-on-surface-variant max-w-lg mx-auto">당신의 탐사 수준에 맞는 아카이브 접근 권한을 선택하세요.</p>
+                </header>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="bg-surface-container-low border border-outline-variant/10 rounded-xl p-8 flex flex-col gap-6">
+                        <div>
+                            <p className="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">탐색자</p>
+                            <p className="font-headline text-4xl font-bold text-on-surface">무료</p>
+                        </div>
+                        <ul className="space-y-3 flex-grow">
+                            <li className="flex items-center gap-2 font-body text-sm text-on-surface-variant"><span className="material-symbols-outlined text-sm text-secondary">check</span>오늘의 우주 사진</li>
+                            <li className="flex items-center gap-2 font-body text-sm text-on-surface-variant"><span className="material-symbols-outlined text-sm text-secondary">check</span>기본 아카이브 접근</li>
+                            <li className="flex items-center gap-2 font-body text-sm text-on-surface-variant"><span className="material-symbols-outlined text-sm text-outline">close</span>AI 한국어 해설</li>
+                        </ul>
+                        <button className="w-full px-6 py-3 border border-outline-variant/30 text-primary font-label font-bold text-xs uppercase tracking-widest rounded-sm hover:bg-surface-container-high transition-colors">시작하기</button>
+                    </div>
+                    <div className="bg-surface-container border border-primary/30 rounded-xl p-8 flex flex-col gap-6 relative">
+                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-on-primary font-label text-[9px] uppercase tracking-widest rounded-full">추천</div>
+                        <div>
+                            <p className="font-label text-[10px] uppercase tracking-widest text-secondary-fixed mb-2">항성계</p>
+                            <p className="font-headline text-4xl font-bold text-primary">₩9,900<span className="text-base font-light text-on-surface-variant">/월</span></p>
+                        </div>
+                        <ul className="space-y-3 flex-grow">
+                            <li className="flex items-center gap-2 font-body text-sm text-on-surface-variant"><span className="material-symbols-outlined text-sm text-secondary">check</span>탐색자 플랜 전체</li>
+                            <li className="flex items-center gap-2 font-body text-sm text-on-surface-variant"><span className="material-symbols-outlined text-sm text-secondary">check</span>AI 한국어 해설 무제한</li>
+                            <li className="flex items-center gap-2 font-body text-sm text-on-surface-variant"><span className="material-symbols-outlined text-sm text-secondary">check</span>생일 우주 탐색</li>
+                        </ul>
+                        <button className="w-full px-6 py-3 bg-gradient-to-r from-primary to-on-primary-container text-on-primary font-label font-bold text-xs uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity">탐사 시작</button>
+                    </div>
+                    <div className="bg-surface-container-low border border-outline-variant/10 rounded-xl p-8 flex flex-col gap-6">
+                        <div>
+                            <p className="font-label text-[10px] uppercase tracking-widest text-tertiary mb-2">은하단</p>
+                            <p className="font-headline text-4xl font-bold text-on-surface">₩29,900<span className="text-base font-light text-on-surface-variant">/월</span></p>
+                        </div>
+                        <ul className="space-y-3 flex-grow">
+                            <li className="flex items-center gap-2 font-body text-sm text-on-surface-variant"><span className="material-symbols-outlined text-sm text-secondary">check</span>항성계 플랜 전체</li>
+                            <li className="flex items-center gap-2 font-body text-sm text-on-surface-variant"><span className="material-symbols-outlined text-sm text-secondary">check</span>전체 아카이브 무제한</li>
+                            <li className="flex items-center gap-2 font-body text-sm text-on-surface-variant"><span className="material-symbols-outlined text-sm text-secondary">check</span>우선 지원</li>
+                        </ul>
+                        <button className="w-full px-6 py-3 border border-tertiary/30 text-tertiary font-label font-bold text-xs uppercase tracking-widest rounded-sm hover:bg-surface-container-high transition-colors">문의하기</button>
+                    </div>
+                </div>
+            </main>
+        );
+
+        const App = () => {
+            return (
+                <BrowserRouter>
+                    <Nav />
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/today" element={<CosmosToday />} />
+                        <Route path="/birthday-universe" element={<CosmosToday />} />
+                        <Route path="/archive" element={<ArchivePage />} />
+                        <Route path="/stars" element={<MyStarSystemPage />} />
+                        <Route path="/detail" element={<DetailPage />} />
+                        <Route path="/pricing" element={<PricingPage />} />
+                    </Routes>
+                    <Footer />
+                </BrowserRouter>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
